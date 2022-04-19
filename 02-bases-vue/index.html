@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js Intro</title>
+</head>
+<body>
+  <div id="myApp">
+    <h1>Batman quotes <smal>{{newQuote}}</smal></h1>
+    
+    <input
+     v-model="newQuote" 
+     type="text" 
+     placeholder="Ingrese aqui"
+     v-on:keypress.enter="addQuote">
+
+    <hr>
+
+    <ul>
+      <li v-for="({quote, author}, idx) in quotes">
+        <span>{{idx + 1}}: {{quote}}</span>
+        <!-- <blockquote v-if="author">- {{author}}</blockquote> -->
+        <blockquote v-show="author">- {{author}}</blockquote>
+      </li>
+    </ul>
+  </div>
+  
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

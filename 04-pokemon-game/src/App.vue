@@ -1,19 +1,15 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <!-- <Counter title="Entrada" :start="150"/>
-  <Counter title="Otro"/> -->
-  <Indecision/>
+  <PokemonPage/>
 </template>
 
 <script>
-  // import Counter from './components/Counter.vue'
-  import Indecision from './components/Indecision.vue'
+import PokemonPage from './pages/PokemonPage.vue'
 
 export default {
   name: 'App',
   components: {
-    // Counter
-    Indecision
+    PokemonPage
   }
 }
 </script>

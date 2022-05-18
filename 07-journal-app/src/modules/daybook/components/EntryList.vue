@@ -5,21 +5,43 @@
         type="text"
         class="form-control"
         placeholder="Buscar entrada"
+        v-model="term"
       >
     </div>
 
+    <div class="mt-2 d-flex flex-column">
+      <button class="btn btn-primary mx-3">
+        <i @click="$router.push({ name: 'entry', params: { id: 'new' } })" class="fa fa-plus-circle" />
+        Nueva Entrada
+      </button>
+    </div>
+
     <div class="entry-scrollarea">
-      <EntryItem v-for="item in 100" :key="item"></EntryItem>
+      <EntryItem v-for="entry in entriesByTerm" :key="entry.id" :entry="entry"></EntryItem>
     </div>
   </div>
 </template>
 
 <script>
 import { defineAsyncComponent } from 'vue'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
     EntryItem: defineAsyncComponent(() => import('./EntryItem.vue')),
+  },
+  computed: {
+    ...mapGetters('journal', ['getEntriesByTerm']),
+
+    entriesByTerm() {
+      console.log('trigger')
+      return this.getEntriesByTerm(this.term)
+    },
+  },
+  data() {
+    return {
+      term: ''
+    }
   }
 }
 </script>

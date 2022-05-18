@@ -28,6 +28,7 @@ export default {
   // computed: mapState(['count'])
   computed: {
     countComputed() {
+      console.log(this.$store.state.counter.count)
       return this.$store.state.counter.count
     },
     ...mapState('counter', ['count', 'lastMutation', 'isLoading'])
